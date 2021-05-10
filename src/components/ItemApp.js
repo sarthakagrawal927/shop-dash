@@ -23,11 +23,11 @@ function ItemApp() {
       elevation={0}>
       <AppBar color='primary' position='static' style={{ height: "64px" }}>
         <Toolbar>
-          <Typography color='inherit'>TODOS WITH HOOKS</Typography>
+          <Typography color='inherit'>Items </Typography>
         </Toolbar>
       </AppBar>
       <Grid container justify='center' style={{ marginTop: "1rem" }}>
-        <Grid item xs={11} md={8} lg={4}>
+        <Grid item xs={11} md={8} lg={8}>
           <ItemsProvider>
             <ItemForm />
             <ItemList />

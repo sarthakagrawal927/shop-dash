@@ -9,18 +9,16 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 
 function Itemlist() {
-  const todos = useContext(ItemsContext);
+  const items = useContext(ItemsContext);
 
-  if (todos.length)
+  if (items.length !== 0)
     return (
       <Paper>
         <List>
-          {todos.map((todo, i) => (
-            // To add a key to a fragment, we have to use the long-hand version
-            // rather than <> </>, we have to use <React.Fragment>
-            <React.Fragment key={i}>
-              <Item {...todo} key={todo.id} />
-              {i < todos.length - 1 && <Divider />}
+          {items.map((item, index) => (
+            <React.Fragment key={index}>
+              <Item {...item} key={index} />
+              {index < items.length - 1 && <Divider />}
             </React.Fragment>
           ))}
         </List>

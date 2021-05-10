@@ -3,10 +3,10 @@ import React, { createContext } from "react";
 import itemReducer from "../reducers/item.reducer";
 import { useLocalStorageReducer } from "../reducers/useLocalStorageReducer";
 
-const defaultTodos = [
-  { id: 1, task: "task1", completed: false },
-  { id: 2, task: "task2", completed: true },
-];
+// const defaultTodos = [
+//   { id: 1, task: "task1", completed: false },
+//   { id: 2, task: "task2", completed: true },
+// ];
 
 const defaultItems = [
   { id: 1, category: "cat1", subcategory: "subcat1", name: "item1", price: 2 },
@@ -21,13 +21,13 @@ export const ItemsContext = createContext();
 export const DispatchContext = createContext();
 
 export function ItemsProvider(props) {
-  const [todos, dispatch] = useLocalStorageReducer(
+  const [items, dispatch] = useLocalStorageReducer(
     "items",
-    defaultTodos,
+    defaultItems,
     itemReducer,
   );
   return (
-    <ItemsContext.Provider value={todos}>
+    <ItemsContext.Provider value={items}>
       <DispatchContext.Provider value={dispatch}>
         {" "}
         {props.children}

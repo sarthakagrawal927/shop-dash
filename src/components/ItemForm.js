@@ -8,23 +8,34 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 
 function ItemForm() {
-  const [value, handleChange, reset] = useInputState("");
+  const [name, handleChangeName, resetName] = useInputState("");
+  const [price, handleChangePrice, resetPrice] = useInputState("");
+
   const dispatch = useContext(DispatchContext);
   return (
     <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch({ type: "ADD", task: value });
-          reset();
+          dispatch({ type: "ADD", name: name, price: price });
+          resetName();
+          resetPrice();
         }}>
         <TextField
-          value={value}
-          onChange={handleChange}
+          value={name}
+          onChange={handleChangeName}
           margin='normal'
           label='Add New Item'
           fullWidth
         />
+        <TextField
+          value={price}
+          onChange={handleChangePrice}
+          margin='normal'
+          label='Add New Item Price'
+          fullWidth
+        />
+        <button style={{ display: "none" }}></button>
       </form>
     </Paper>
   );

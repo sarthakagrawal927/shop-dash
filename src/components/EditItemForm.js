@@ -6,27 +6,38 @@ import useInputState from "../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
 
-function EditTodoForm({ id, task, toggleEditForm }) {
-  const [value, handleChange, reset] = useInputState(task);
+function EditItemForm({ id, originalName, originalPrice, toggleEditForm }) {
+  const [name, handleChangeName, resetName] = useInputState(originalName);
+  const [price, handleChangePrice, resetPrice] = useInputState(originalPrice);
+
   const dispatch = useContext(DispatchContext);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "EDIT", newTask: value, id: id });
-        reset();
+        dispatch({ type: "EDIT", newName: name, newPrice: price, id: id });
+        resetName();
+        resetPrice();
         toggleEditForm();
       }}
-      style={{ marginLeft: "1rem", width: "50%" }}>
+      style={{ marginLeft: "1rem", width: "80%" }}>
       <TextField
         margin='normal'
-        value={value}
-        onChange={handleChange}
-        fullWidth
+        value={name}
+        onChange={handleChangeName}
         autoFocus
+        style={{ paddingRight: "0.5rem", width: "49%" }}
       />
+      <TextField
+        margin='normal'
+        value={price}
+        onChange={handleChangePrice}
+        autoFocus
+        style={{ width: "49%" }}
+      />
+      <button style={{ display: "none" }}></button>
     </form>
   );
 }
-export default EditTodoForm;
+export default EditItemForm;

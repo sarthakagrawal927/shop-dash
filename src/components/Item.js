@@ -13,19 +13,23 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
-function Item({ id, task, completed }) {
+function Item({ id, name, price, category, subcategory }) {
   const [isEditing, toggle] = useToggleState(false);
   const dispatch = useContext(DispatchContext);
   return (
-    <ListItem style={{ height: "64px" }}>
+    <ListItem style={{ height: "64px" }} component='div'>
       {isEditing ? (
-        <EditItemForm id={id} task={task} toggleEditForm={toggle} />
+        <EditItemForm
+          id={id}
+          originalName={name}
+          originalPrice={price}
+          toggleEditForm={toggle}
+        />
       ) : (
         <>
-          <ListItemText
-            style={{ textDecoration: completed ? "line-through" : "none" }}>
-            {task}
-          </ListItemText>
+          <ListItemText>{name}</ListItemText>
+          <ListItemText>{price}</ListItemText>
+
           <ListItemSecondaryAction>
             <IconButton
               aria-label='Delete'
