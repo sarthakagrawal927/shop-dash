@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
-import todoReducer from "../reducers/todo.reducer";
-import { useLocalStorageReducer } from "../hooks/useLocalStorageReducer";
+
+import itemReducer from "../reducers/item.reducer";
+import { useLocalStorageReducer } from "../reducers/useLocalStorageReducer";
 
 const defaultTodos = [
   { id: 1, task: "task1", completed: false },
@@ -16,21 +17,21 @@ const defaultItems = [
   { id: 6, category: "cat2", subcategory: "subcat3", name: "item6", price: 7 },
 ];
 
-export const TodosContext = createContext();
+export const ItemsContext = createContext();
 export const DispatchContext = createContext();
 
-export function TodosProvider(props) {
+export function ItemsProvider(props) {
   const [todos, dispatch] = useLocalStorageReducer(
-    "todos",
+    "items",
     defaultTodos,
-    todoReducer,
+    itemReducer,
   );
   return (
-    <TodosContext.Provider value={todos}>
+    <ItemsContext.Provider value={todos}>
       <DispatchContext.Provider value={dispatch}>
         {" "}
         {props.children}
       </DispatchContext.Provider>
-    </TodosContext.Provider>
+    </ItemsContext.Provider>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import TodoApp from "./components/TodoApp";
+import ItemApp from "./components/ItemApp";
 
 function App() {
-  return <TodoApp />;
+  return <ItemApp />;
 }
 
 export default App;

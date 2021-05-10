@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
+
+import { DispatchContext } from "../contexts/items.context";
+
+import useInputState from "../hooks/useInputState";
+
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import useInputState from "../hooks/useInputState";
-import { DispatchContext } from "../contexts/todos.context";
 
-function TodoForm() {
+function ItemForm() {
   const [value, handleChange, reset] = useInputState("");
   const dispatch = useContext(DispatchContext);
   return (
@@ -19,11 +22,11 @@ function TodoForm() {
           value={value}
           onChange={handleChange}
           margin='normal'
-          label='Add New Todo'
+          label='Add New Item'
           fullWidth
         />
       </form>
     </Paper>
   );
 }
-export default TodoForm;
+export default ItemForm;

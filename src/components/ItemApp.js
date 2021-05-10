@@ -1,14 +1,17 @@
 import React from "react";
-import TodoList from "./TodoList";
-import TodoForm from "./TodoForm";
+
+import { ItemsProvider } from "../contexts/items.context";
+
+import ItemList from "./ItemList";
+import ItemForm from "./ItemForm";
+
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { TodosProvider } from "../contexts/todos.context";
 
-function TodoApp() {
+function ItemApp() {
   return (
     <Paper
       style={{
@@ -25,13 +28,13 @@ function TodoApp() {
       </AppBar>
       <Grid container justify='center' style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={4}>
-          <TodosProvider>
-            <TodoForm />
-            <TodoList />
-          </TodosProvider>
+          <ItemsProvider>
+            <ItemForm />
+            <ItemList />
+          </ItemsProvider>
         </Grid>
       </Grid>
     </Paper>
   );
 }
-export default TodoApp;
+export default ItemApp;
