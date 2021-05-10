@@ -1,12 +1,7 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 import itemReducer from "../reducers/item.reducer";
 import { useLocalStorageReducer } from "../reducers/useLocalStorageReducer";
-
-// const defaultTodos = [
-//   { id: 1, task: "task1", completed: false },
-//   { id: 2, task: "task2", completed: true },
-// ];
 
 const defaultItems = [
   { id: 1, category: "cat1", subcategory: "subcat1", name: "item1", price: 2 },
@@ -17,7 +12,16 @@ const defaultItems = [
   { id: 6, category: "cat2", subcategory: "subcat3", name: "item6", price: 7 },
 ];
 
-const defaultCategory = { category: "cat2", subcategory: "subcat3" };
+const categories = [
+  {
+    name: "cat1",
+    subcategory: ["subcat1", "subcat2"],
+  },
+  {
+    name: "cat2",
+    subcategory: ["subcat3"],
+  },
+];
 
 export const ItemsContext = createContext();
 export const DispatchContext = createContext();
@@ -29,8 +33,18 @@ export function ItemsProvider(props) {
     defaultItems,
     itemReducer,
   );
+
+  const [activeCategory, setActiveCategory] = useState({
+    name: categories[0].name,
+    subcategory: categories[0].subcategory[0],
+  });
+
   return (
-    <CategoryContext.Provider value={defaultCategory}>
+    <CategoryContext.Provider
+      value={{
+        allCategories: categories,
+        activeCategory: [activeCategory, setActiveCategory],
+      }}>
       <ItemsContext.Provider value={items}>
         <DispatchContext.Provider value={dispatch}>
           {" "}

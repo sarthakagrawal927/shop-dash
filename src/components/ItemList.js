@@ -8,7 +8,8 @@ import { Paper, List, Divider } from "@material-ui/core";
 
 function Itemlist() {
   const items = useContext(ItemsContext);
-  const { category, subcategory } = useContext(CategoryContext);
+  const { activeCategory } = useContext(CategoryContext);
+  const [aCategory] = activeCategory;
 
   if (items.length !== 0)
     return (
@@ -16,8 +17,8 @@ function Itemlist() {
         <List>
           {items.map(
             (item, index) =>
-              item.category === category &&
-              item.subcategory === subcategory && (
+              item.category === aCategory.name &&
+              item.subcategory === aCategory.subcategory && (
                 <React.Fragment key={index}>
                   <Item {...item} key={index} />
                   {index < items.length - 1 && <Divider />}

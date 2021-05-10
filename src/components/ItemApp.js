@@ -4,6 +4,7 @@ import { ItemsProvider } from "../contexts/items.context";
 
 import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
+import Dropdown from "./Dropdown";
 
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 
@@ -25,6 +26,7 @@ function ItemApp() {
       <Grid container justify='center' style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={8}>
           <ItemsProvider>
+            <Dropdown />
             <ItemForm />
             <ItemList />
           </ItemsProvider>
