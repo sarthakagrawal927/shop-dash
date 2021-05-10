@@ -9,11 +9,11 @@ function useLocalStorageReducer(key, defaultVal, reducer) {
     } catch (e) {
       value = defaultVal;
     }
-    // console.log("USING", value);
     return value;
   });
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(state));
+    // eslint-disable-next-line
   }, [state]);
 
   return [state, dispatch];

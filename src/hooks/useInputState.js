@@ -1,7 +1,9 @@
 import { useState } from "react";
-export default initialVal => {
+
+// eslint-disable-next-line
+export default (initialVal) => {
   const [value, setValue] = useState(initialVal);
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValue(e.target.value);
   };
   const reset = () => {
