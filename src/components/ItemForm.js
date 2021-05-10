@@ -1,11 +1,9 @@
 import React, { useContext } from "react";
 
 import { DispatchContext } from "../contexts/items.context";
-
 import useInputState from "../hooks/useInputState";
 
-import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
+import { TextField, Paper } from "@material-ui/core";
 
 function ItemForm() {
   const [name, handleChangeName, resetName] = useInputState("");

@@ -17,8 +17,11 @@ const defaultItems = [
   { id: 6, category: "cat2", subcategory: "subcat3", name: "item6", price: 7 },
 ];
 
+const defaultCategory = { category: "cat2", subcategory: "subcat3" };
+
 export const ItemsContext = createContext();
 export const DispatchContext = createContext();
+export const CategoryContext = createContext();
 
 export function ItemsProvider(props) {
   const [items, dispatch] = useLocalStorageReducer(
@@ -27,11 +30,13 @@ export function ItemsProvider(props) {
     itemReducer,
   );
   return (
-    <ItemsContext.Provider value={items}>
-      <DispatchContext.Provider value={dispatch}>
-        {" "}
-        {props.children}
-      </DispatchContext.Provider>
-    </ItemsContext.Provider>
+    <CategoryContext.Provider value={defaultCategory}>
+      <ItemsContext.Provider value={items}>
+        <DispatchContext.Provider value={dispatch}>
+          {" "}
+          {props.children}
+        </DispatchContext.Provider>
+      </ItemsContext.Provider>
+    </CategoryContext.Provider>
   );
 }

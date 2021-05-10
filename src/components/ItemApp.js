@@ -5,11 +5,7 @@ import { ItemsProvider } from "../contexts/items.context";
 import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
 
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Grid from "@material-ui/core/Grid";
+import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 
 function ItemApp() {
   return (

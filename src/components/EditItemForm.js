@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import { DispatchContext } from "../contexts/items.context";
-
 import useInputState from "../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
