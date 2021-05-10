@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { TodosProvider } from "./contexts/todos.context";
+import { TodosProvider } from "../contexts/todos.context";
 
 function TodoApp() {
   return (

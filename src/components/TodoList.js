@@ -3,7 +3,7 @@ import Todo from "./Todo";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import { TodosContext } from "./contexts/todos.context";
+import { TodosContext } from "../contexts/todos.context";
 
 function TodoList() {
   const todos = useContext(TodosContext);
