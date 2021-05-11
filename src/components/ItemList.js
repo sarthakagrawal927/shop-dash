@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
-import { ItemsContext, CategoryContext } from "../contexts/items.context";
+import { ItemsContext } from "../contexts/items.context";
+import { CategoriesContext } from "../contexts/categories.context";
 
 import Item from "./Item";
 
@@ -8,7 +9,7 @@ import { Paper, List, Divider } from "@material-ui/core";
 
 function Itemlist() {
   const items = useContext(ItemsContext);
-  const { activeCategory } = useContext(CategoryContext);
+  const { activeCategory } = useContext(CategoriesContext);
   const [aCategory] = activeCategory;
 
   if (items.length !== 0)

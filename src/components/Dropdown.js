@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 
-import { CategoryContext } from "../contexts/items.context";
+import { CategoriesContext } from "../contexts/categories.context";
+import useToggleState from "../hooks/useToggleState";
+
+import EditCategoryForm from "./EditCatForm";
 
 import {
   InputLabel,
@@ -8,10 +11,17 @@ import {
   Select,
   FormControl,
   Paper,
+  IconButton,
+  ListItemSecondaryAction,
 } from "@material-ui/core";
 
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import AddIcon from "@material-ui/icons/Add";
+
 function Dropdown() {
-  const { allCategories, activeCategory } = useContext(CategoryContext);
+  const [isEditing, toggle] = useToggleState(false);
+  const { allCategories, activeCategory } = useContext(CategoriesContext);
   const [aCategory, setActiveCategory] = activeCategory;
 
   const handleCategoryChange = (e) => {
@@ -28,7 +38,7 @@ function Dropdown() {
 
   return (
     <Paper style={{ margin: "1rem 0", padding: "1rem" }}>
-      <FormControl style={{ width: "100%" }}>
+      <FormControl style={{ width: "100%", marginBottom: "1rem" }}>
         <InputLabel id='category-select-label'>Category</InputLabel>
         <Select
           labelId='category-select-label'
@@ -43,6 +53,17 @@ function Dropdown() {
             );
           })}
         </Select>
+        <ListItemSecondaryAction>
+          <IconButton aria-label='Delete' onClick={() => {}}>
+            <DeleteIcon />
+          </IconButton>
+          <IconButton aria-label='Edit' onClick={toggle}>
+            <EditIcon />
+          </IconButton>
+          <IconButton aria-label='Add' onClick={toggle}>
+            <AddIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
       </FormControl>
 
       <FormControl style={{ width: "100%" }}>
@@ -60,7 +81,6 @@ function Dropdown() {
               </MenuItem>
             ));
           })}
-          <MenuItem value='' key='q2313'></MenuItem>
         </Select>
       </FormControl>
     </Paper>
