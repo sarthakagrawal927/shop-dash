@@ -1,6 +1,6 @@
 import { uuid } from "uuidv4";
 
-const reducer = (state, action) => {
+const itemReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       return [
@@ -9,6 +9,8 @@ const reducer = (state, action) => {
           id: uuid(),
           name: action.name,
           price: action.price,
+          category: action.category,
+          subcategory: action.subcategory,
         },
       ];
     case "REMOVE":
@@ -24,4 +26,4 @@ const reducer = (state, action) => {
   }
 };
 
-export default reducer;
+export default itemReducer;

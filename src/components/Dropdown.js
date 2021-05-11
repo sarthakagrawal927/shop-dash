@@ -2,7 +2,13 @@ import React, { useContext } from "react";
 
 import { CategoryContext } from "../contexts/items.context";
 
-import { InputLabel, MenuItem, Select, FormControl } from "@material-ui/core";
+import {
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+  Paper,
+} from "@material-ui/core";
 
 function Dropdown() {
   const { allCategories, activeCategory } = useContext(CategoryContext);
@@ -21,8 +27,8 @@ function Dropdown() {
   };
 
   return (
-    <>
-      <FormControl style={{ width: "90%" }}>
+    <Paper style={{ margin: "1rem 0", padding: "1rem" }}>
+      <FormControl style={{ width: "100%" }}>
         <InputLabel id='category-select-label'>Category</InputLabel>
         <Select
           labelId='category-select-label'
@@ -39,7 +45,7 @@ function Dropdown() {
         </Select>
       </FormControl>
 
-      <FormControl style={{ width: "90%" }}>
+      <FormControl style={{ width: "100%" }}>
         <InputLabel id='subcategory-select-label'>Sub Category</InputLabel>
         <Select
           labelId='subcategory-select-label'
@@ -57,7 +63,7 @@ function Dropdown() {
           <MenuItem value='' key='q2313'></MenuItem>
         </Select>
       </FormControl>
-    </>
+    </Paper>
   );
 }
 

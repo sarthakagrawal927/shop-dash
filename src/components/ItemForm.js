@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { DispatchContext } from "../contexts/items.context";
+import { CategoryContext, DispatchContext } from "../contexts/items.context";
 import useInputState from "../hooks/useInputState";
 
 import { TextField, Paper } from "@material-ui/core";
@@ -8,6 +8,8 @@ import { TextField, Paper } from "@material-ui/core";
 function ItemForm() {
   const [name, handleChangeName, resetName] = useInputState("");
   const [price, handleChangePrice, resetPrice] = useInputState("");
+  const { activeCategory } = useContext(CategoryContext);
+  const [aCategory] = activeCategory;
 
   const dispatch = useContext(DispatchContext);
   return (
@@ -15,7 +17,13 @@ function ItemForm() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch({ type: "ADD", name: name, price: price });
+          dispatch({
+            type: "ADD",
+            name: name,
+            price: price,
+            category: aCategory.name,
+            subcategory: aCategory.subcategory,
+          });
           resetName();
           resetPrice();
         }}>
