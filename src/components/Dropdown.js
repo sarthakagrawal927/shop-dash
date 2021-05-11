@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 
-import { CategoriesContext } from "../contexts/categories.context";
+import {
+  CategoriesContext,
+  DispatchContext,
+} from "../contexts/categories.context";
 import useToggleState from "../hooks/useToggleState";
-
-import EditCategoryForm from "./EditCatForm";
 
 import {
   InputLabel,
@@ -23,18 +24,19 @@ function Dropdown() {
   const [isEditing, toggle] = useToggleState(false);
   const { allCategories, activeCategory } = useContext(CategoriesContext);
   const [aCategory, setActiveCategory] = activeCategory;
-
+  console.log(allCategories);
   const handleCategoryChange = (e) => {
     const cat = e.target.value;
     const subs = allCategories.filter(({ name, subcategory }) => name === cat);
     setActiveCategory({
       name: e.target.value,
-      subcategory: subs[0].subcategory[0],
+      subcategory: subs !== undefined ? subs[0].subcategory[0] : null,
     });
   };
   const handleSubCategoryChange = (e) => {
     setActiveCategory({ ...aCategory, subcategory: e.target.value });
   };
+  const dispatch = useContext(DispatchContext);
 
   return (
     <Paper style={{ margin: "1rem 0", padding: "1rem" }}>
@@ -54,7 +56,20 @@ function Dropdown() {
           })}
         </Select>
         <ListItemSecondaryAction>
-          <IconButton aria-label='Delete' onClick={() => {}}>
+          <IconButton
+            aria-label='Delete'
+            onClick={() => {
+              dispatch({
+                type: "REMOVE_CATEGORY",
+                name: aCategory.name,
+              });
+              setActiveCategory({
+                ...aCategory,
+                name: allCategories[0].name,
+                subcategory: allCategories[0].subcategory[0],
+              });
+              console.log(aCategory.name);
+            }}>
             <DeleteIcon />
           </IconButton>
           <IconButton aria-label='Edit' onClick={toggle}>

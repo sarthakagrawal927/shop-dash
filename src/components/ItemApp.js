@@ -6,6 +6,8 @@ import { CategoriesProvider } from "../contexts/categories.context";
 import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
 import Dropdown from "./Dropdown";
+import CategoryForm from "./CategoryForm";
+import SubcategoryForm from "./SubCategoryForm";
 
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 
@@ -28,6 +30,8 @@ function ItemApp() {
         <Grid item xs={11} md={8} lg={8}>
           <CategoriesProvider>
             <ItemsProvider>
+              <CategoryForm />
+              <SubcategoryForm />
               <Dropdown />
               <ItemForm />
               <ItemList />
