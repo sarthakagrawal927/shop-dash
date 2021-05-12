@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 
-import {
-  CategoriesContext,
-  DispatchContext,
-} from "../contexts/categories.context";
+import { ShopContext, DispatchContext } from "../contexts";
 import useToggleState from "../hooks/useToggleState";
 
 import EditItemForm from "./EditCatForm";
@@ -24,7 +21,7 @@ import EditIcon from "@material-ui/icons/Edit";
 function Dropdown() {
   const [isEditing, toggle] = useToggleState(false);
 
-  const { allCategories, activeCategory } = useContext(CategoriesContext);
+  const { allCategories, activeCategory } = useContext(ShopContext);
   const [aCategory, setActiveCategory] = activeCategory;
 
   console.log(allCategories);

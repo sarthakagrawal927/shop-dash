@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 
-import {
-  CategoriesContext,
-  DispatchContext,
-} from "../contexts/categories.context";
+import { ShopContext, DispatchContext } from "../contexts";
 import useInputState from "../hooks/useInputState";
 
 import { TextField, Paper } from "@material-ui/core";
@@ -11,7 +8,7 @@ import { TextField, Paper } from "@material-ui/core";
 function SubcategoryForm() {
   const [subcategory, handleSubcategoryName, resetSubcategoryName] =
     useInputState("");
-  const { activeCategory } = useContext(CategoriesContext);
+  const { activeCategory } = useContext(ShopContext);
   const [aCategory] = activeCategory;
 
   const dispatch = useContext(DispatchContext);

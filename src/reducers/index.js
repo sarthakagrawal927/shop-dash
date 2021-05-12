@@ -1,7 +1,29 @@
 import { uuid } from "uuidv4";
 
-const CategoryReducer = (state, action) => {
+const Reducer = (state, action) => {
   switch (action.type) {
+    case "ADD_ITEM":
+      return [
+        ...state,
+        {
+          id: uuid(),
+          name: action.name,
+          price: action.price,
+          category: action.category,
+          subcategory: action.subcategory,
+        },
+      ];
+
+    case "REMOVE_ITEM":
+      return state.filter((item) => item.id !== action.id);
+
+    case "EDIT_ITEM":
+      return state.map((item) =>
+        item.id === action.id
+          ? { ...item, name: action.newName, price: action.newPrice }
+          : item,
+      );
+
     case "ADD_CATEGORY":
       console.log(action);
       return [
@@ -38,6 +60,7 @@ const CategoryReducer = (state, action) => {
 
     case "REMOVE_SUBCATEGORY":
       return state.filter((category) => category.id !== action.id);
+
     case "EDIT_SUBCATEGORY":
       return state.map((category) =>
         category.id === action.id
@@ -50,4 +73,4 @@ const CategoryReducer = (state, action) => {
   }
 };
 
-export default CategoryReducer;
+export default Reducer;

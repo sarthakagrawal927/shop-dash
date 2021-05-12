@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { DispatchContext } from "../contexts/categories.context";
+import { DispatchContext } from "../contexts";
 import useInputState from "../hooks/useInputState";
 
 import { TextField, Paper } from "@material-ui/core";

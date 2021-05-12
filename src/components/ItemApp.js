@@ -1,7 +1,6 @@
 import React from "react";
 
-import { ItemsProvider } from "../contexts/items.context";
-import { CategoriesProvider } from "../contexts/categories.context";
+import { ShopProvider } from "../contexts";
 
 import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
@@ -28,15 +27,13 @@ function ItemApp() {
       </AppBar>
       <Grid container justify='center' style={{ marginTop: "1rem" }}>
         <Grid item xs={11} md={8} lg={8}>
-          <CategoriesProvider>
-            <ItemsProvider>
-              <CategoryForm />
-              <SubcategoryForm />
-              <Dropdown />
-              <ItemForm />
-              <ItemList />
-            </ItemsProvider>
-          </CategoriesProvider>
+          <ShopProvider>
+            <CategoryForm />
+            <SubcategoryForm />
+            <Dropdown />
+            <ItemForm />
+            <ItemList />
+          </ShopProvider>
         </Grid>
       </Grid>
     </Paper>
