@@ -14,7 +14,7 @@ export const shop = [
             id: uuid(),
           },
           {
-            name: "item1",
+            name: "item2",
             price: "12",
             id: uuid(),
           },
@@ -24,12 +24,12 @@ export const shop = [
         name: "subcat2",
         items: [
           {
-            name: "item1",
+            name: "item3",
             price: "12",
             id: uuid(),
           },
           {
-            name: "item1",
+            name: "item4",
             price: "12",
             id: uuid(),
           },
@@ -39,7 +39,39 @@ export const shop = [
         name: "subcat3",
         items: [
           {
-            name: "item1",
+            name: "item5",
+            price: "12",
+            id: uuid(),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    category: "cat2",
+    subcategory: [
+      {
+        name: "subcat4",
+        id: uuid(),
+        items: [
+          {
+            name: "item6",
+            price: "12",
+            id: uuid(),
+          },
+          {
+            name: "item7",
+            price: "12",
+            id: uuid(),
+          },
+        ],
+      },
+      {
+        name: "subcat5",
+        items: [
+          {
+            name: "item8",
             price: "12",
             id: uuid(),
           },

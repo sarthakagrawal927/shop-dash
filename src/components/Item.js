@@ -15,7 +15,7 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
-function Item({ id, name, price, category, subcategory }) {
+function Item({ id, name, price }) {
   const [isEditing, toggle] = useToggleState(false);
   const dispatch = useContext(DispatchContext);
   return (
@@ -31,8 +31,6 @@ function Item({ id, name, price, category, subcategory }) {
         <>
           <ListItemText>{name}</ListItemText>
           <ListItemText>{price}</ListItemText>
-          <ListItemText>{category}</ListItemText>
-          <ListItemText>{subcategory}</ListItemText>
 
           <ListItemSecondaryAction>
             <IconButton

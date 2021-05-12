@@ -24,14 +24,17 @@ function Dropdown() {
   const { allCategories, activeCategory } = useContext(ShopContext);
   const [aCategory, setActiveCategory] = activeCategory;
 
-  console.log(allCategories);
-
   const handleCategoryChange = (e) => {
     const cat = e.target.value;
-    const subs = allCategories.filter(({ name, subcategory }) => name === cat);
+    const selectCategory = allCategories.filter(
+      ({ category, subcategory }) => category === cat,
+    );
     setActiveCategory({
       name: e.target.value,
-      subcategory: subs !== undefined ? subs[0].subcategory[0] : null,
+      subcategory:
+        selectCategory !== undefined
+          ? selectCategory[0].subcategory[0].name
+          : null,
     });
   };
 
@@ -53,10 +56,10 @@ function Dropdown() {
             id='category-select'
             value={aCategory.name}
             onChange={handleCategoryChange}>
-            {allCategories.map(({ name }, index) => {
+            {allCategories.map(({ category }, index) => {
               return (
-                <MenuItem key={index} value={name}>
-                  {name}
+                <MenuItem key={index} value={category}>
+                  {category}
                 </MenuItem>
               );
             })}
@@ -92,11 +95,11 @@ function Dropdown() {
           id='subcategory-select'
           value={aCategory.subcategory}
           onChange={handleSubCategoryChange}>
-          {allCategories.map(({ name, subcategory }) => {
-            if (name !== aCategory.name) return null;
-            return subcategory.map((subcategory, index) => (
-              <MenuItem key={index} value={subcategory}>
-                {subcategory}
+          {allCategories.map(({ category, subcategory }) => {
+            if (category !== aCategory.name) return null;
+            return subcategory.map(({ name }, index) => (
+              <MenuItem key={index} value={name}>
+                {name}
               </MenuItem>
             ));
           })}

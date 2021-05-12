@@ -10,8 +10,8 @@ export const DispatchContext = createContext();
 
 export function ShopProvider(props) {
   const [activeCategory, setActiveCategory] = useState({
-    name: shop[0].name,
-    subcategory: shop[0].subcategory[0],
+    name: shop[0].category,
+    subcategory: shop[0].subcategory[0].name,
     id: shop[0].id,
   });
   const [wholeShop, dispatch] = useLocalStorageReducer("shop", shop, reducer);
