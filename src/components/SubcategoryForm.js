@@ -8,13 +8,14 @@ import useInputState from "../hooks/useInputState";
 
 import { TextField, Paper } from "@material-ui/core";
 
-function CategoryForm() {
+function SubcategoryForm() {
   const [subcategory, handleSubcategoryName, resetSubcategoryName] =
     useInputState("");
   const { activeCategory } = useContext(CategoriesContext);
   const [aCategory] = activeCategory;
 
   const dispatch = useContext(DispatchContext);
+
   return (
     <Paper style={{ margin: "1rem 0", padding: "0 1rem" }}>
       <form
@@ -22,8 +23,9 @@ function CategoryForm() {
           e.preventDefault();
           dispatch({
             type: "ADD_SUBCATEGORY",
-            subcategory: subcategory,
-            category: aCategory,
+            newSubcategory: subcategory,
+            name: aCategory.name,
+            id: aCategory.id,
           });
           resetSubcategoryName();
         }}>
@@ -31,7 +33,7 @@ function CategoryForm() {
           value={subcategory}
           onChange={handleSubcategoryName}
           margin='normal'
-          label='Add New Subcategory for selected CATEGORY'
+          label='Add New Subcategory for selected category'
           fullWidth
         />
         <button style={{ display: "none" }}></button>
@@ -39,4 +41,4 @@ function CategoryForm() {
     </Paper>
   );
 }
-export default CategoryForm;
+export default SubcategoryForm;

@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 
-import { DispatchContext } from "../contexts/items.context";
+import { DispatchContext } from "../contexts/categories.context";
 import useInputState from "../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
 
-function EditItemForm({ id, originalName, originalPrice, toggleEditForm }) {
+function EditCategoryForm({ originalName, toggleEditForm }) {
   const [name, handleChangeName, resetName] = useInputState(originalName);
-  const [price, handleChangePrice, resetPrice] = useInputState(originalPrice);
 
   const dispatch = useContext(DispatchContext);
 
@@ -15,10 +14,13 @@ function EditItemForm({ id, originalName, originalPrice, toggleEditForm }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "EDIT", newName: name, newPrice: price, id: id });
-        resetName();
-        resetPrice();
+        dispatch({
+          type: "EDIT_CATEGORY",
+          newName: name,
+        });
+        console.log(name);
         toggleEditForm();
+        resetName();
       }}
       style={{ marginLeft: "1rem", width: "80%" }}>
       <TextField
@@ -33,4 +35,4 @@ function EditItemForm({ id, originalName, originalPrice, toggleEditForm }) {
     </form>
   );
 }
-export default EditItemForm;
+export default EditCategoryForm;

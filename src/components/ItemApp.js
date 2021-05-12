@@ -7,7 +7,7 @@ import ItemList from "./ItemList";
 import ItemForm from "./ItemForm";
 import Dropdown from "./Dropdown";
 import CategoryForm from "./CategoryForm";
-import SubcategoryForm from "./SubCategoryForm";
+import SubcategoryForm from "./SubcategoryForm";
 
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 

@@ -12,6 +12,7 @@ export function CategoriesProvider(props) {
   const [activeCategory, setActiveCategory] = useState({
     name: categories[0].name,
     subcategory: categories[0].subcategory[0],
+    id: categories[0].id,
   });
 
   const [allCategories, dispatch] = useLocalStorageReducer(

@@ -7,34 +7,42 @@ const CategoryReducer = (state, action) => {
       return [
         ...state,
         {
+          id: uuid(),
           name: action.name,
           subcategory: action.subcategory,
         },
       ];
 
     case "REMOVE_CATEGORY":
-      return state.filter((item) => item.name !== action.name);
+      return state.filter((category) => category.name !== action.name);
+
     case "EDIT_CATEGORY":
-      return state.map((item) =>
-        item.id === action.id ? { ...item, name: action.newName } : item,
+      console.log(action);
+      return state.map((category) =>
+        category.name === action.newName
+          ? { ...category, name: action.newName }
+          : category,
       );
 
     case "ADD_SUBCATEGORY":
+      console.log(state);
       console.log(action);
+      for (var i = 0; i < state.length; i++) {
+        if (state[i].id === action.id) {
+          console.log("s");
+          state[i].subcategory.push(action.newSubcategory);
+        }
+      }
+      console.log(state);
+      return state;
 
-      return [
-        ...state,
-        {
-          id: uuid(),
-          category: action.category,
-          subcategory: action.subcategory,
-        },
-      ];
     case "REMOVE_SUBCATEGORY":
-      return state.filter((item) => item.id !== action.id);
+      return state.filter((category) => category.id !== action.id);
     case "EDIT_SUBCATEGORY":
-      return state.map((item) =>
-        item.id === action.id ? { ...item, name: action.newName } : item,
+      return state.map((category) =>
+        category.id === action.id
+          ? { ...category, name: action.newName }
+          : category,
       );
 
     default:
