@@ -5,6 +5,7 @@ const Reducer = (state, action) => {
     case "ADD_ITEM":
       console.log(state);
       console.log(action);
+      break;
 
     case "REMOVE_ITEM":
       return state.filter((item) => item.id !== action.id);
@@ -18,14 +19,10 @@ const Reducer = (state, action) => {
 
     case "ADD_CATEGORY":
       console.log(action);
-      return [
+      return {
         ...state,
-        {
-          id: uuid(),
-          name: action.name,
-          subcategory: action.subcategory,
-        },
-      ];
+        categories: [...state, action.category],
+      };
 
     case "REMOVE_CATEGORY":
       return state.filter((category) => category.name !== action.name);

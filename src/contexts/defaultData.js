@@ -2,22 +2,22 @@ import { uuid } from "uuidv4";
 export const shop = {
   categories: [
     {
-      id: uuid(),
+      id: 1,
       name: "cat1",
       subcategory: [
         {
           name: "subcat1",
-          id: uuid(),
+          id: 2,
           items: [
             {
               name: "item1",
               price: "12",
-              id: uuid(),
+              id: 3,
             },
             {
               name: "item2",
               price: "12",
-              id: uuid(),
+              id: 4,
             },
           ],
         },
@@ -27,12 +27,12 @@ export const shop = {
             {
               name: "item3",
               price: "12",
-              id: uuid(),
+              id: 5,
             },
             {
               name: "item4",
               price: "12",
-              id: uuid(),
+              id: 6,
             },
           ],
         },
@@ -42,29 +42,29 @@ export const shop = {
             {
               name: "item5",
               price: "12",
-              id: uuid(),
+              id: 7,
             },
           ],
         },
       ],
     },
     {
-      id: uuid(),
+      id: 8,
       name: "cat2",
       subcategory: [
         {
           name: "subcat4",
-          id: uuid(),
+          id: 9,
           items: [
             {
               name: "item6",
               price: "12",
-              id: uuid(),
+              id: 10,
             },
             {
               name: "item7",
               price: "12",
-              id: uuid(),
+              id: 11,
             },
           ],
         },
@@ -74,7 +74,7 @@ export const shop = {
             {
               name: "item8",
               price: "12",
-              id: uuid(),
+              id: 12,
             },
           ],
         },
