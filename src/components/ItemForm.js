@@ -18,11 +18,12 @@ function ItemForm() {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch({
-            type: "ADD",
+            type: "ADD_ITEM",
             name: name,
             price: price,
             category: aCategory.name,
             subcategory: aCategory.subcategory,
+            id: aCategory.id,
           });
           resetName();
           resetPrice();

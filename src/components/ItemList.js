@@ -7,7 +7,9 @@ import Item from "./Item";
 import { Paper, List, Divider } from "@material-ui/core";
 
 function Itemlist() {
-  const { activeCategory, allCategories } = useContext(ShopContext);
+  const { activeCategory, shop } = useContext(ShopContext);
+  const allCategories = shop.categories;
+  console.log(allCategories);
   const [aCategory] = activeCategory;
   let items = null;
   // eslint-disable-next-line
@@ -15,7 +17,7 @@ function Itemlist() {
     // eslint-disable-next-line
     category.subcategory.map((subcategory) => {
       if (
-        aCategory.name === category.category &&
+        aCategory.name === category.name &&
         aCategory.subcategory === subcategory.name
       ) {
         items = subcategory.items;
@@ -41,17 +43,3 @@ function Itemlist() {
   return null;
 }
 export default Itemlist;
-
-/*
-    
-
-
-                    (category) =>
-            category.name === aCategory.name &&
-            category.subcategory.map((subcategory) => {
-              subcategory === aCategory.subcategory &&
-                subcategory.items.map((item, index) => {
-                  return <p>s</p>;
-                });
-            }),
-*/

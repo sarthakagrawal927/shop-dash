@@ -21,14 +21,14 @@ import EditIcon from "@material-ui/icons/Edit";
 function Dropdown() {
   const [isEditing, toggle] = useToggleState(false);
 
-  const { allCategories, activeCategory } = useContext(ShopContext);
+  const { shop, activeCategory } = useContext(ShopContext);
   const [aCategory, setActiveCategory] = activeCategory;
+  const allCategories = shop.categories;
 
   const handleCategoryChange = (e) => {
     const cat = e.target.value;
-    const selectCategory = allCategories.filter(
-      ({ category, subcategory }) => category === cat,
-    );
+    const selectCategory = allCategories.filter(({ name }) => name === cat);
+
     setActiveCategory({
       name: e.target.value,
       subcategory:
@@ -56,10 +56,10 @@ function Dropdown() {
             id='category-select'
             value={aCategory.name}
             onChange={handleCategoryChange}>
-            {allCategories.map(({ category }, index) => {
+            {allCategories.map(({ name }, index) => {
               return (
-                <MenuItem key={index} value={category}>
-                  {category}
+                <MenuItem key={index} value={name}>
+                  {name}
                 </MenuItem>
               );
             })}
@@ -95,8 +95,8 @@ function Dropdown() {
           id='subcategory-select'
           value={aCategory.subcategory}
           onChange={handleSubCategoryChange}>
-          {allCategories.map(({ category, subcategory }) => {
-            if (category !== aCategory.name) return null;
+          {allCategories.map(({ name, subcategory }) => {
+            if (name !== aCategory.name) return null;
             return subcategory.map(({ name }, index) => (
               <MenuItem key={index} value={name}>
                 {name}

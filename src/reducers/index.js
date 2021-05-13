@@ -3,16 +3,8 @@ import { uuid } from "uuidv4";
 const Reducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      return [
-        ...state,
-        {
-          id: uuid(),
-          name: action.name,
-          price: action.price,
-          category: action.category,
-          subcategory: action.subcategory,
-        },
-      ];
+      console.log(state);
+      console.log(action);
 
     case "REMOVE_ITEM":
       return state.filter((item) => item.id !== action.id);
