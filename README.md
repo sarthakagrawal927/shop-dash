@@ -57,3 +57,5 @@ yarn dev
 # or
 pnpm dev
 ```
+
+Looks like I was not supposed to code this in the internship, I was supposed to use Zoho Creator for making this interface. My bad XD.
