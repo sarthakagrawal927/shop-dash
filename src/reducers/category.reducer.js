@@ -14,30 +14,29 @@ const CategoryReducer = (state, action) => {
       ];
 
     case "REMOVE_CATEGORY":
-      return state.filter((category) => category.name !== action.name);
+      console.log(state);
+      console.log(action);
+      return state.filter((category) => category.id !== action.id);
 
     case "EDIT_CATEGORY":
-      console.log(action);
       return state.map((category) =>
-        category.name === action.newName
+        category.id === action.id
           ? { ...category, name: action.newName }
           : category,
       );
 
     case "ADD_SUBCATEGORY":
-      console.log(state);
       console.log(action);
-      for (var i = 0; i < state.length; i++) {
-        if (state[i].id === action.id) {
-          console.log("s");
-          state[i].subcategory.push(action.newSubcategory);
-        }
-      }
       console.log(state);
-      return state;
+      return state.map((category) =>
+        category.id === action.id
+          ? { ...category, subcategory: [action.newSubcategory] }
+          : category,
+      );
 
     case "REMOVE_SUBCATEGORY":
       return state.filter((category) => category.id !== action.id);
+
     case "EDIT_SUBCATEGORY":
       return state.map((category) =>
         category.id === action.id

@@ -13,14 +13,19 @@ const itemReducer = (state, action) => {
           subcategory: action.subcategory,
         },
       ];
+
     case "REMOVE":
       return state.filter((item) => item.id !== action.id);
+
     case "EDIT":
+      console.log(action);
+      console.log(state);
       return state.map((item) =>
         item.id === action.id
           ? { ...item, name: action.newName, price: action.newPrice }
           : item,
       );
+
     default:
       return state;
   }

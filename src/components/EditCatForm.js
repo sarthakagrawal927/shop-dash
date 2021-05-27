@@ -5,7 +5,7 @@ import useInputState from "../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
 
-function EditCategoryForm({ originalName, toggleEditForm }) {
+function EditCategoryForm({ originalName, id, toggleEditForm }) {
   const [name, handleChangeName, resetName] = useInputState(originalName);
 
   const dispatch = useContext(DispatchContext);
@@ -17,6 +17,7 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
         dispatch({
           type: "EDIT_CATEGORY",
           newName: name,
+          id: id,
         });
         console.log(name);
         toggleEditForm();

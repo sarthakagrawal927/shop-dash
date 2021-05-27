@@ -28,13 +28,18 @@ function Dropdown() {
   const [aCategory, setActiveCategory] = activeCategory;
 
   console.log(allCategories);
+  console.log(aCategory);
 
   const handleCategoryChange = (e) => {
-    const cat = e.target.value;
-    const subs = allCategories.filter(({ name, subcategory }) => name === cat);
+    const categoryName = e.target.value;
+    const categoryInfo = allCategories.filter(
+      ({ name, subcategory, id }) => name === categoryName,
+    );
     setActiveCategory({
-      name: e.target.value,
-      subcategory: subs !== undefined ? subs[0].subcategory[0] : null,
+      name: categoryName,
+      subcategory:
+        categoryInfo !== undefined ? categoryInfo[0].subcategory[0] : null,
+      id: categoryInfo !== undefined ? categoryInfo[0].id : null,
     });
   };
 
@@ -47,7 +52,11 @@ function Dropdown() {
   return (
     <Paper style={{ margin: "1rem 0", padding: "1rem" }}>
       {isEditing ? (
-        <EditItemForm originalName={aCategory.name} toggleEditForm={toggle} />
+        <EditItemForm
+          originalName={aCategory.name}
+          id={aCategory.id}
+          toggleEditForm={toggle}
+        />
       ) : (
         <FormControl style={{ width: "100%", marginBottom: "1rem" }}>
           <InputLabel id='category-select-label'>Category</InputLabel>
@@ -70,7 +79,7 @@ function Dropdown() {
               onClick={() => {
                 dispatch({
                   type: "REMOVE_CATEGORY",
-                  name: aCategory.name,
+                  id: aCategory.id,
                 });
                 setActiveCategory({
                   ...aCategory,

@@ -24,8 +24,7 @@ function SubcategoryForm() {
           dispatch({
             type: "ADD_SUBCATEGORY",
             newSubcategory: subcategory,
-            name: aCategory.name,
-            id: aCategory.id,
+            categoryId: aCategory.id,
           });
           resetSubcategoryName();
         }}>
