@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@material-ui/core': ^4.11.4
   '@material-ui/icons': ^4.11.2
+  immer: ^9.0.2
   react: ^17.0.2
   react-dom: ^17.0.2
   react-scripts: 4.0.3
@@ -11,6 +12,7 @@ specifiers:
 dependencies:
   '@material-ui/core': 4.11.4_react-dom@17.0.2+react@17.0.2
   '@material-ui/icons': 4.11.2_f543984b3e6c18c2e2e104a9ecbda934
+  immer: 9.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-scripts: 4.0.3_react@17.0.2
@@ -6026,6 +6028,10 @@ packages:
 
   /immer/8.0.1:
     resolution: {integrity: sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==}
+    dev: false
+
+  /immer/9.0.2:
+    resolution: {integrity: sha512-mkcmzLtIfSp40vAqteRr1MbWNSoI7JE+/PB36FNPoSfJ9RQRmNKuTYCjKkyXyuq3Dgn07HuJBrwJd4ZSk2yUbw==}
     dev: false
 
   /import-cwd/2.1.0:

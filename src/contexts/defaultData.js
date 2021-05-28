@@ -2,22 +2,22 @@ import { uuid } from "uuidv4";
 export const shop = {
   categories: [
     {
-      id: 1,
+      id: uuid(),
       name: "cat1",
       subcategory: [
         {
           name: "subcat1",
-          id: 2,
+          id: uuid(),
           items: [
             {
               name: "item1",
               price: "12",
-              id: 3,
+              id: uuid(),
             },
             {
               name: "item2",
               price: "12",
-              id: 4,
+              id: uuid(),
             },
           ],
         },
@@ -27,12 +27,12 @@ export const shop = {
             {
               name: "item3",
               price: "12",
-              id: 5,
+              id: uuid(),
             },
             {
               name: "item4",
               price: "12",
-              id: 6,
+              id: uuid(),
             },
           ],
         },
@@ -42,29 +42,29 @@ export const shop = {
             {
               name: "item5",
               price: "12",
-              id: 7,
+              id: uuid(),
             },
           ],
         },
       ],
     },
     {
-      id: 8,
+      id: uuid(),
       name: "cat2",
       subcategory: [
         {
           name: "subcat4",
-          id: 9,
+          id: uuid(),
           items: [
             {
               name: "item6",
               price: "12",
-              id: 10,
+              id: uuid(),
             },
             {
               name: "item7",
               price: "12",
-              id: 11,
+              id: uuid(),
             },
           ],
         },
@@ -74,7 +74,54 @@ export const shop = {
             {
               name: "item8",
               price: "12",
-              id: 12,
+              id: uuid(),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: uuid(),
+      name: "cat3",
+      subcategory: [
+        {
+          name: "subcat6",
+          id: uuid(),
+          items: [
+            {
+              name: "item9",
+              price: "12",
+              id: uuid(),
+            },
+            {
+              name: "item10",
+              price: "12",
+              id: uuid(),
+            },
+          ],
+        },
+        {
+          name: "subcat7",
+          items: [
+            {
+              name: "item11",
+              price: "12",
+              id: uuid(),
+            },
+            {
+              name: "item4",
+              price: "12",
+              id: uuid(),
+            },
+          ],
+        },
+        {
+          name: "subcat8",
+          items: [
+            {
+              name: "item12",
+              price: "12",
+              id: uuid(),
             },
           ],
         },

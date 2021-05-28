@@ -35,6 +35,7 @@ function Dropdown() {
         selectCategory !== undefined
           ? selectCategory[0].subcategory[0].name
           : null,
+      id: selectCategory !== undefined ? selectCategory[0].id : null,
     });
   };
 
@@ -70,14 +71,14 @@ function Dropdown() {
               onClick={() => {
                 dispatch({
                   type: "REMOVE_CATEGORY",
-                  name: aCategory.name,
+                  id: aCategory.id,
                 });
                 setActiveCategory({
                   ...aCategory,
+                  id: allCategories[0].id,
                   name: allCategories[0].name,
-                  subcategory: allCategories[0].subcategory[0],
+                  subcategory: allCategories[0].subcategory[0].name,
                 });
-                console.log(aCategory.name);
               }}>
               <DeleteIcon />
             </IconButton>

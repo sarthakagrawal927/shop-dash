@@ -13,6 +13,7 @@ export function ShopProvider(props) {
     name: shop.categories[0].name,
     subcategory: shop.categories[0].subcategory[0].name,
     id: shop.categories[0].id,
+    items: shop.categories[0].subcategory[0].items,
   });
 
   const [wholeShop, dispatch] = useLocalStorageReducer("shop", shop, reducer);

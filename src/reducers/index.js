@@ -1,65 +1,71 @@
+import produce from "immer";
 import { uuid } from "uuidv4";
 
-const Reducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_ITEM":
-      console.log(state);
-      console.log(action);
-      break;
+let index;
+const Reducer = (state, action) =>
+  produce(state, (draft) => {
+    switch (action.type) {
+      case "ADD_ITEM":
+        console.log(state);
+        console.log(action);
+        break;
 
-    case "REMOVE_ITEM":
-      return state.filter((item) => item.id !== action.id);
+      case "REMOVE_ITEM":
+        console.log(state);
+        console.log(action);
+        break;
 
-    case "EDIT_ITEM":
-      return state.map((item) =>
-        item.id === action.id
-          ? { ...item, name: action.newName, price: action.newPrice }
-          : item,
-      );
+      case "EDIT_ITEM":
+        console.log(state);
+        console.log(action);
+        break;
 
-    case "ADD_CATEGORY":
-      console.log(action);
-      return {
-        ...state,
-        categories: [...state, action.category],
-      };
+      case "ADD_CATEGORY":
+        draft.categories.push({
+          id: uuid(),
+          name: action.name,
+          subcategory: [{ name: action.subcategory, id: uuid(), items: [] }],
+        });
+        break;
 
-    case "REMOVE_CATEGORY":
-      return state.filter((category) => category.name !== action.name);
+      case "REMOVE_CATEGORY":
+        console.log(state);
+        console.log(action);
+        index = draft.categories.findIndex(
+          (category) => category.id === action.id,
+        );
+        console.log(index);
+        if (index !== -1) draft.categories.splice(index, 1);
+        break;
 
-    case "EDIT_CATEGORY":
-      console.log(action);
-      return state.map((category) =>
-        category.name === action.newName
-          ? { ...category, name: action.newName }
-          : category,
-      );
+      case "EDIT_CATEGORY":
+        console.log(state);
+        console.log(action);
+        index = draft.categories.findIndex(
+          (category) => category.id === action.id,
+        );
+        console.log(index);
+        if (index !== -1) draft.categories[index].name = action.newName;
+        break;
 
-    case "ADD_SUBCATEGORY":
-      console.log(state);
-      console.log(action);
-      for (var i = 0; i < state.length; i++) {
-        if (state[i].id === action.id) {
-          console.log("s");
-          state[i].subcategory.push(action.newSubcategory);
-        }
-      }
-      console.log(state);
-      return state;
+      case "ADD_SUBCATEGORY":
+        console.log(state);
+        console.log(action);
+        break;
 
-    case "REMOVE_SUBCATEGORY":
-      return state.filter((category) => category.id !== action.id);
+      case "REMOVE_SUBCATEGORY":
+        console.log(state);
+        console.log(action);
+        break;
 
-    case "EDIT_SUBCATEGORY":
-      return state.map((category) =>
-        category.id === action.id
-          ? { ...category, name: action.newName }
-          : category,
-      );
+      case "EDIT_SUBCATEGORY":
+        console.log(state);
+        console.log(action);
+        break;
 
-    default:
-      return state;
-  }
-};
+      default:
+        break;
+    }
+  });
 
 export default Reducer;
