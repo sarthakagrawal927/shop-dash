@@ -24,7 +24,6 @@ function CategoryDropdown() {
   const { shop, activeCategory } = useContext(ShopContext);
   const [aCategory, setActiveCategory] = activeCategory;
   const allCategories = shop.categories;
-  console.log(aCategory);
   const handleCategoryChange = (e) => {
     const cat = e.target.value;
     const selectCategory = allCategories.filter(({ name }) => name === cat);

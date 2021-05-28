@@ -24,10 +24,24 @@ function CategoryDropdown() {
   const { shop, activeCategory } = useContext(ShopContext);
   const [aCategory, setActiveCategory] = activeCategory;
   const allCategories = shop.categories;
-  console.log(aCategory);
 
   const handleSubCategoryChange = (e) => {
-    setActiveCategory({ ...aCategory, subcategory: e.target.value });
+    const selectCategory = allCategories.filter(
+      ({ id, subcategory }) => id === aCategory.id,
+    );
+
+    const selectSubcategory = selectCategory[0].subcategory.filter(
+      ({ name }) => name === e.target.value,
+    );
+
+    setActiveCategory({
+      name: selectCategory[0].name,
+      id: selectCategory[0].id,
+      subcategory: e.target.value,
+      subcategoryId: selectSubcategory[0].id,
+    });
+
+    console.log(aCategory);
   };
 
   const dispatch = useContext(DispatchContext);
@@ -66,10 +80,10 @@ function CategoryDropdown() {
                   subcategoryId: aCategory.subcategoryId,
                 });
                 setActiveCategory({
-                  ...aCategory,
                   id: allCategories[0].id,
                   name: allCategories[0].name,
                   subcategory: allCategories[0].subcategory[0].name,
+                  subcategoryId: allCategories[0].subcategory[0].id,
                 });
               }}>
               <DeleteIcon />

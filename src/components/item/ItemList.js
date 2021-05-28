@@ -9,7 +9,6 @@ import { Paper, List, Divider } from "@material-ui/core";
 function Itemlist() {
   const { activeCategory, shop } = useContext(ShopContext);
   const allCategories = shop.categories;
-  console.log(allCategories);
   const [aCategory] = activeCategory;
   let items = null;
   // eslint-disable-next-line

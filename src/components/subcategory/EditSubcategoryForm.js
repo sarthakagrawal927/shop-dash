@@ -7,8 +7,8 @@ import TextField from "@material-ui/core/TextField";
 
 function EditCategoryForm({ originalName, toggleEditForm }) {
   const [name, handleChangeName, resetName] = useInputState(originalName);
-  const { activeCategory, shop } = useContext(ShopContext);
-  const allCategories = shop.categories;
+  const { activeCategory } = useContext(ShopContext);
+  // const allCategories = shop.categories;
   const [aCategory, setActiveCategory] = activeCategory;
   const dispatch = useContext(DispatchContext);
 
@@ -22,12 +22,13 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
           id: aCategory.id,
           subcategoryId: aCategory.subcategoryId,
         });
+        console.log(aCategory);
         setActiveCategory({
           ...aCategory,
-          id: allCategories[0].id,
-          name: allCategories[0].name,
-          subcategory: allCategories[0].subcategory[0].name,
-          subcategoryId: allCategories[0].subcategory[0].id,
+          id: aCategory.id,
+          name: aCategory.name,
+          subcategory: aCategory.subcategory,
+          subcategoryId: aCategory.subcategoryId,
         });
         toggleEditForm();
         resetName();
