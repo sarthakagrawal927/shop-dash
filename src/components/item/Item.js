@@ -1,7 +1,7 @@
 import React, { useContext, memo } from "react";
 
-import { DispatchContext } from "../contexts";
-import useToggleState from "../hooks/useToggleState";
+import { DispatchContext } from "../../contexts";
+import useToggleState from "../../hooks/useToggleState";
 
 import EditItemForm from "./EditItemForm";
 

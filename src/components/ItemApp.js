@@ -2,11 +2,12 @@ import React from "react";
 
 import { ShopProvider } from "../contexts";
 
-import ItemList from "./ItemList";
-import ItemForm from "./ItemForm";
-import Dropdown from "./Dropdown";
-import CategoryForm from "./CategoryForm";
-import SubcategoryForm from "./SubcategoryForm";
+import ItemList from "./item/ItemList";
+import ItemForm from "./item/ItemForm";
+import CategoryDropdown from "./category/CategoryDropdown";
+import CategoryForm from "./category/CategoryForm";
+import SubcategoryForm from "./subcategory/SubcategoryForm";
+import SubcategoryDropdown from "./subcategory/SubcategoryDropdown";
 
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 
@@ -30,7 +31,8 @@ function ItemApp() {
           <ShopProvider>
             <CategoryForm />
             <SubcategoryForm />
-            <Dropdown />
+            <CategoryDropdown />
+            <SubcategoryDropdown />
             <ItemForm />
             <ItemList />
           </ShopProvider>

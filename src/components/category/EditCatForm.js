@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import { DispatchContext, ShopContext } from "../contexts";
-import useInputState from "../hooks/useInputState";
+import { DispatchContext, ShopContext } from "../../contexts";
+import useInputState from "../../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
 
@@ -26,6 +26,7 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
           id: allCategories[0].id,
           name: allCategories[0].name,
           subcategory: allCategories[0].subcategory[0].name,
+          subcategoryId: allCategories[0].subcategory[0].id,
         });
         toggleEditForm();
         resetName();

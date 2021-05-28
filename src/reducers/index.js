@@ -34,7 +34,6 @@ const Reducer = (state, action) =>
         index = draft.categories.findIndex(
           (category) => category.id === action.id,
         );
-        console.log(index);
         if (index !== -1) draft.categories.splice(index, 1);
         break;
 
@@ -44,13 +43,21 @@ const Reducer = (state, action) =>
         index = draft.categories.findIndex(
           (category) => category.id === action.id,
         );
-        console.log(index);
         if (index !== -1) draft.categories[index].name = action.newName;
         break;
 
       case "ADD_SUBCATEGORY":
         console.log(state);
         console.log(action);
+        index = draft.categories.findIndex(
+          (category) => category.id === action.id,
+        );
+        if (index !== -1)
+          draft.categories[index].subcategory.push({
+            name: action.newSubcategory,
+            id: uuid(),
+            items: [],
+          });
         break;
 
       case "REMOVE_SUBCATEGORY":

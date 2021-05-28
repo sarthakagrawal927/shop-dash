@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
-import { ShopContext, DispatchContext } from "../contexts";
-import useInputState from "../hooks/useInputState";
+import { ShopContext, DispatchContext } from "../../contexts";
+import useInputState from "../../hooks/useInputState";
 
 import { TextField, Paper } from "@material-ui/core";
 
@@ -21,7 +21,6 @@ function SubcategoryForm() {
           dispatch({
             type: "ADD_SUBCATEGORY",
             newSubcategory: subcategory,
-            name: aCategory.name,
             id: aCategory.id,
           });
           resetSubcategoryName();
