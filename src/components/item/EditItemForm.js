@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { DispatchContext } from "../../contexts";
+import { DispatchContext, ShopContext } from "../../contexts";
 import useInputState from "../../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
@@ -10,12 +10,21 @@ function EditItemForm({ id, originalName, originalPrice, toggleEditForm }) {
   const [price, handleChangePrice, resetPrice] = useInputState(originalPrice);
 
   const dispatch = useContext(DispatchContext);
+  const { activeCategory } = useContext(ShopContext);
+  const [aCategory] = activeCategory;
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "EDIT", newName: name, newPrice: price, id: id });
+        dispatch({
+          type: "EDIT_ITEM",
+          newName: name,
+          newPrice: price,
+          itemId: id,
+          categoryId: aCategory.id,
+          subcategoryId: aCategory.subcategoryId,
+        });
         resetName();
         resetPrice();
         toggleEditForm();

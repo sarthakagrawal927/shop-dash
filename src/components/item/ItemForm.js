@@ -17,13 +17,13 @@ function ItemForm() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          console.log(aCategory);
           dispatch({
             type: "ADD_ITEM",
             name: name,
             price: price,
-            category: aCategory.name,
-            subcategory: aCategory.subcategory,
-            id: aCategory.id,
+            categoryId: aCategory.id,
+            subcategoryId: aCategory.subcategory,
           });
           resetName();
           resetPrice();

@@ -14,7 +14,7 @@ export function ShopProvider(props) {
     subcategory: shop.categories[0].subcategory[0].name,
     id: shop.categories[0].id,
     subcategoryId: shop.categories[0].subcategory[0].id,
-    items: shop.categories[0].subcategory[0].items,
+    // items: shop.categories[0].subcategory[0].items,
   });
 
   const [wholeShop, dispatch] = useLocalStorageReducer("shop", shop, reducer);

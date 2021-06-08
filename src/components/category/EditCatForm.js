@@ -16,13 +16,13 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        console.log(activeCategory);
         dispatch({
           type: "EDIT_CATEGORY",
           newName: name,
           id: aCategory.id,
         });
         setActiveCategory({
-          ...aCategory,
           id: allCategories[0].id,
           name: allCategories[0].name,
           subcategory: allCategories[0].subcategory[0].name,

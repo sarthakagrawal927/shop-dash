@@ -23,7 +23,10 @@ function ItemApp() {
       elevation={0}>
       <AppBar color='primary' position='static' style={{ height: "64px" }}>
         <Toolbar>
-          <Typography color='inherit'>Items </Typography>
+          <Typography color='inherit'>
+            Items , try not edit anything in cat1 because of dropdown of
+            material UI
+          </Typography>
         </Toolbar>
       </AppBar>
       <Grid container justify='center' style={{ marginTop: "1rem" }}>

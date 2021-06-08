@@ -1,6 +1,6 @@
 import React, { useContext, memo } from "react";
 
-import { DispatchContext } from "../../contexts";
+import { DispatchContext, ShopContext } from "../../contexts";
 import useToggleState from "../../hooks/useToggleState";
 
 import EditItemForm from "./EditItemForm";
@@ -16,6 +16,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 function Item({ id, name, price }) {
+  const { activeCategory } = useContext(ShopContext);
+  const [aCategory] = activeCategory;
   const [isEditing, toggle] = useToggleState(false);
   const dispatch = useContext(DispatchContext);
   return (
@@ -35,7 +37,14 @@ function Item({ id, name, price }) {
           <ListItemSecondaryAction>
             <IconButton
               aria-label='Delete'
-              onClick={() => dispatch({ type: "REMOVE", id: id })}>
+              onClick={() =>
+                dispatch({
+                  type: "REMOVE_ITEM",
+                  itemId: id,
+                  categoryId: aCategory.id,
+                  subcategoryId: aCategory.subcategoryId,
+                })
+              }>
               <DeleteIcon />
             </IconButton>
             <IconButton aria-label='Edit' onClick={toggle}>

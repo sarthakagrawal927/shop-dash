@@ -6,8 +6,25 @@ const Reducer = (state, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case "ADD_ITEM":
-        console.log(state);
-        console.log(action);
+        // console.log(state);
+        // console.log(action);
+        index = draft.categories.findIndex(
+          (category) => category.id === action.categoryId,
+        );
+        console.log(index);
+        if (index !== -1) {
+          index2 = draft.categories[index].subcategory.findIndex(
+            (subcategory) => (subcategory.name = action.subcategory),
+          );
+          console.log(index2);
+          if (index2 !== -1) {
+            draft.categories[index].subcategory[index2].items.push({
+              id: uuid(),
+              name: action.name,
+              price: action.price,
+            });
+          }
+        }
         break;
 
       case "REMOVE_ITEM":
@@ -55,18 +72,13 @@ const Reducer = (state, action) =>
         break;
 
       case "REMOVE_SUBCATEGORY":
-        console.log(state);
-        console.log(action);
-
         index = draft.categories.findIndex(
           (category) => category.id === action.categoryId,
         );
-        console.log(index);
         if (index !== -1) {
           index2 = draft.categories[index].subcategory.findIndex(
             (subcategory) => (subcategory.id = action.subcategoryId),
           );
-          console.log(index2);
           if (index2 !== -1) {
             draft.categories[index].subcategory.splice(index2, 1);
           }
@@ -77,10 +89,12 @@ const Reducer = (state, action) =>
         index = draft.categories.findIndex(
           (category) => category.id === action.id,
         );
+        console.log(index);
         if (index !== -1) {
           index2 = draft.categories[index].subcategory.findIndex(
             (subcategory) => (subcategory.id = action.subcategoryId),
           );
+          console.log(index2);
           if (index2 !== -1) {
             draft.categories[index].subcategory[index2].name = action.newName;
           }

@@ -23,6 +23,7 @@ export const shop = {
         },
         {
           name: "subcat2",
+          id: uuid(),
           items: [
             {
               name: "item3",
@@ -38,6 +39,8 @@ export const shop = {
         },
         {
           name: "subcat3",
+                    id: uuid(),
+
           items: [
             {
               name: "item5",
@@ -70,6 +73,8 @@ export const shop = {
         },
         {
           name: "subcat5",
+                    id: uuid(),
+
           items: [
             {
               name: "item8",
@@ -102,6 +107,8 @@ export const shop = {
         },
         {
           name: "subcat7",
+                    id: uuid(),
+
           items: [
             {
               name: "item11",
@@ -117,6 +124,8 @@ export const shop = {
         },
         {
           name: "subcat8",
+                    id: uuid(),
+
           items: [
             {
               name: "item12",

@@ -5,10 +5,10 @@ import useInputState from "../../hooks/useInputState";
 
 import TextField from "@material-ui/core/TextField";
 
-function EditCategoryForm({ originalName, toggleEditForm }) {
+function EditSubcategoryForm({ originalName, toggleEditForm }) {
   const [name, handleChangeName, resetName] = useInputState(originalName);
-  const { activeCategory } = useContext(ShopContext);
-  // const allCategories = shop.categories;
+  const { activeCategory, shop } = useContext(ShopContext);
+  const allCategories = shop.categories;
   const [aCategory, setActiveCategory] = activeCategory;
   const dispatch = useContext(DispatchContext);
 
@@ -16,19 +16,18 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        console.log(activeCategory);
         dispatch({
           type: "EDIT_SUBCATEGORY",
           newName: name,
           id: aCategory.id,
           subcategoryId: aCategory.subcategoryId,
         });
-        console.log(aCategory);
         setActiveCategory({
-          ...aCategory,
-          id: aCategory.id,
-          name: aCategory.name,
-          subcategory: aCategory.subcategory,
-          subcategoryId: aCategory.subcategoryId,
+          id: allCategories[0].id,
+          name: allCategories[0].name,
+          subcategory: allCategories[0].subcategory[0].name,
+          subcategoryId: allCategories[0].subcategory[0].id,
         });
         toggleEditForm();
         resetName();
@@ -46,4 +45,4 @@ function EditCategoryForm({ originalName, toggleEditForm }) {
     </form>
   );
 }
-export default EditCategoryForm;
+export default EditSubcategoryForm;
