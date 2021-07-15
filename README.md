@@ -1,5 +1,13 @@
 # Shop Dashboard
 
+## Purpose
+
+To get an intership, turned out they wanted to use a 3rd party service for this functionality that I decided to code.
+
+## Stack
+
+ReactJS with immer for updating state.
+
 ```js
 {
     categories: [
